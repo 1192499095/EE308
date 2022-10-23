@@ -64,9 +64,6 @@ public class lab1_2 {
         int num = 0;
         Pattern pattern = Pattern.compile("switch");
         Matcher matcher = pattern.matcher(s);
-        while (matcher.find()) {
-            num++;
-        }
-        System.out.println("switch num: " + num);
+
     }
 }

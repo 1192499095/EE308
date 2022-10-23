@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class lab1_2 {
     public static void main(String[] args) {
         try {
-            solution("C:\\Users\\ZYC\\Desktop\\source.c", 3);
+            solution("C:\\Users\\ZYC\\Desktop\\source.c", 4);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -28,7 +28,7 @@ public class lab1_2 {
         } else if (level == 3) {
             level3(s);
         } else if (level == 4) {
-            //level4(s);
+            level4(s);
         }
     }
 
@@ -75,6 +75,11 @@ public class lab1_2 {
     public static void level3(String s) {
         level2(s);
         System.out.println("if-else num: " + getNum(s, 3));
+    }
+
+    public static void level4(String s) {
+        level3(s);
+        System.out.println("if-elseif-else num: " + getNum(s, 4));
     }
 
     public static int getNum(String s, int level) {

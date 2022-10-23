@@ -2,17 +2,27 @@ import java.util.*;
 import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class lab1_2 {
     public static void main(String[] args) {
+        lab1_2 lab1_2 = new lab1_2();
         try {
-            solution("C:\\Users\\ZYC\\Desktop\\source.c", 4);
+            lab1_2.solution("C:\\Users\\ZYC\\Desktop\\source.c", 4);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void solution(String url, int level) throws IOException {
+    public void solution(String url, int level) throws IOException {
         File file = new File(url);
         BufferedReader reader = new BufferedReader(new FileReader(file));
         StringBuilder s2 = new StringBuilder();
@@ -32,7 +42,7 @@ public class lab1_2 {
         }
     }
 
-    public static void level1(String s) {
+    public void level1(String s) {
         int num = 0;
         String keyword[] = {"auto", "break", "case", "char", "const", "continue", "default", "do", "double", "else", "enum", "extern",
                 "float", "for", "goto", "if", "int", "long", "register", "return", "short", "signed", "sizeof", "static",
@@ -48,7 +58,7 @@ public class lab1_2 {
         System.out.println("total num: " + num);
     }
 
-    public static void level2(String s) {
+    public void level2(String s) {
         level1(s);
         int num = 0;
         Pattern pattern = Pattern.compile("switch");
@@ -72,17 +82,17 @@ public class lab1_2 {
         System.out.println("case num: " + caseNum[0] + " " + caseNum[1]);
     }
 
-    public static void level3(String s) {
+    public void level3(String s) {
         level2(s);
         System.out.println("if-else num: " + getNum(s, 3));
     }
 
-    public static void level4(String s) {
+    public void level4(String s) {
         level3(s);
         System.out.println("if-elseif-else num: " + getNum(s, 4));
     }
 
-    public static int getNum(String s, int level) {
+    public int getNum(String s, int level) {
         int ifelNum = 0;
         int esifNum = 0;
         boolean lock = true;
@@ -120,5 +130,26 @@ public class lab1_2 {
             return 0;
         }
     }
+}
+
+class TestCode {
+    lab1_2 lab1_2 = new lab1_2();
+
+    @ParameterizedTest
+    @MethodSource("parameterDataProvider")
+    void test(String url, int l, String result) throws IOException {
+        lab1_2.solution(url, l);
+        assertEquals(result, lab1_2.toString());
+    }
+
+    public static Stream<Arguments> parameterDataProvider() {
+        return Stream.of(
+                Arguments.of("C:\\Users\\ZYC\\Desktop\\source.c", 1, "total num: 35"),
+                Arguments.of("C:\\Users\\ZYC\\Desktop\\source.c", 2, "switch num: 2\ncase num: 3 2"),
+                Arguments.of("C:\\Users\\ZYC\\Desktop\\source.c", 3, "if-else num: 2"),
+                Arguments.of("C:\\Users\\ZYC\\Desktop\\source.c", 4, "if-elseif-else num: 2")
+        );
+    }
+
 }
 

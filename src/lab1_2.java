@@ -58,7 +58,7 @@ public class lab1_2 {
         }
         System.out.println("switch num: " + num);
         String temp[] = s.split("switch");
-        int case[] = new int[num];
+        int caseNum[] = new int[num];
         int count = 0;
         Pattern pattern2 = Pattern.compile("case");
         for(int i=0;i<num;i++){
@@ -66,9 +66,10 @@ public class lab1_2 {
             while (matcher2.find()) {
                 count++;
             }
-            case[i] = count;
-
+            caseNum[i] = count;
+            count = 0;
         }
+        System.out.print("case num: "+caseNum[0]+" "+caseNum[1]);
 
 
     }

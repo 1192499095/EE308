@@ -82,7 +82,7 @@ public class lab1_2 {
         int esifNum = 0;
         boolean lock = true;
         Stack stack = new Stack();
-        Pattern pattern = Pattern.compile("if|else|else if");
+        Pattern pattern = Pattern.compile("else if|if|else");
         Matcher matcher = pattern.matcher(s);
         while (matcher.find()) {
             String temp = matcher.group();

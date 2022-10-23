@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class lab1_2 {
     public static void main(String[] args) {
         try {
-            solution("C:\\Users\\ZYC\\Desktop\\source.c", 2);
+            solution("C:\\Users\\ZYC\\Desktop\\source.c", 3);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,6 +77,8 @@ public class lab1_2 {
         int num = 0;
         Pattern pattern = Pattern.compile("if|else|else if");
         Matcher matcher = pattern.matcher(s);
-        
+        while (matcher.find()) {
+            String temp = matcher.group();
+        }
     }
 }

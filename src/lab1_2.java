@@ -57,6 +57,20 @@ public class lab1_2 {
             num++;
         }
         System.out.println("switch num: " + num);
+        String temp[] = s.split("switch");
+        int case[] = new int[num];
+        int count = 0;
+        Pattern pattern2 = Pattern.compile("case");
+        for(int i=0;i<num;i++){
+            Matcher matcher2 = pattern2.matcher(temp[i+1]);
+            while (matcher2.find()) {
+                count++;
+            }
+            case[i] = count;
+
+        }
+
+
     }
 
     public static void level3(String s) {

@@ -61,24 +61,22 @@ public class lab1_2 {
         int caseNum[] = new int[num];
         int count = 0;
         Pattern pattern2 = Pattern.compile("case");
-        for(int i=0;i<num;i++){
-            Matcher matcher2 = pattern2.matcher(temp[i+1]);
+        for (int i = 0; i < num; i++) {
+            Matcher matcher2 = pattern2.matcher(temp[i + 1]);
             while (matcher2.find()) {
                 count++;
             }
             caseNum[i] = count;
             count = 0;
         }
-        System.out.print("case num: "+caseNum[0]+" "+caseNum[1]);
-
-
+        System.out.print("case num: " + caseNum[0] + " " + caseNum[1]);
     }
 
     public static void level3(String s) {
         level2(s);
         int num = 0;
-        Pattern pattern = Pattern.compile("switch");
+        Pattern pattern = Pattern.compile("if|else|else if");
         Matcher matcher = pattern.matcher(s);
-
+        
     }
 }

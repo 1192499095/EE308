@@ -74,6 +74,10 @@ public class lab1_2 {
 
     public static void level3(String s) {
         level2(s);
+        System.out.println("if-else num: " + getNum(s, 3));
+    }
+
+    public static int getNum(String s, int level) {
         int ifelNum = 0;
         int esifNum = 0;
         boolean lock = true;
@@ -98,8 +102,17 @@ public class lab1_2 {
                             lock = false;
                         }
                     }
+                    stack.pop();
+                    lock = true;
                 }
             }
+        }
+        if (level == 3) {
+            return ifelNum;
+        } else if (level == 4) {
+            return esifNum;
+        } else {
+            return 0;
         }
     }
 }

@@ -26,7 +26,7 @@ public class lab1_2 {
         } else if (level == 2) {
             level2(s);
         } else if (level == 3) {
-            //level3(s);
+            level3(s);
         } else if (level == 4) {
             //level4(s);
         }
@@ -69,16 +69,38 @@ public class lab1_2 {
             caseNum[i] = count;
             count = 0;
         }
-        System.out.print("case num: " + caseNum[0] + " " + caseNum[1]);
+        System.out.println("case num: " + caseNum[0] + " " + caseNum[1]);
     }
 
     public static void level3(String s) {
         level2(s);
-        int num = 0;
+        int ifelNum = 0;
+        int esifNum = 0;
+        boolean lock = true;
+        Stack stack = new Stack();
         Pattern pattern = Pattern.compile("if|else|else if");
         Matcher matcher = pattern.matcher(s);
         while (matcher.find()) {
             String temp = matcher.group();
+            if ("if".equals(temp)) {
+                stack.push(temp);
+            } else if ("else if".equals(temp)) {
+                stack.push(temp);
+            } else if ("else".equals(temp)) {
+                if ("if".equals(stack.peek())) {
+                    stack.pop();
+                    ifelNum++;
+                } else {
+                    while (!"if".equals(stack.peek())) {
+                        stack.pop();
+                        if (lock == true) {
+                            esifNum++;
+                            lock = false;
+                        }
+                    }
+                }
+            }
         }
     }
 }
+

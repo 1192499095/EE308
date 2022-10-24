@@ -45,9 +45,8 @@ public class lab1_2 {
 
     public void level1(String s) {
         int num = 0;
-        String keyword[] = {"auto", "break", "case", "char", "const", "continue", "default", "do", "double", "else", "enum", "extern",
-                "float", "for", "goto", "if", "int", "long", "register", "return", "short", "signed", "sizeof", "static",
-                "struct", "switch", "typedef", "unsigned", "union", "void", "volatile", "while"};
+        String keyword[] = {"auto", "break", "case", "char", "const", "continue", "default", "do", "double", "else", "enum", "extern", "float", "for", "goto", "if", "int", "long",
+                "register", "return", "short", "signed", "sizeof", "static", "struct", "switch", "typedef", "unsigned", "union", "void", "volatile", "while"};
         for (int i = 0; i < keyword.length; i++) {
             String temp = "[^a-zA-Z_]" + keyword[i] + "[^a-zA-Z_]";
             Pattern pattern = Pattern.compile(temp);
